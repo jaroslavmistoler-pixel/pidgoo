@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="pidgoo">
-<meta property="og:description" content="Rychlý a přehledný e-mailový klient pro Windows a Mac.">
-<meta property="og:image" content="https://pidgoo.com/img/app-light.webp">
+<meta property="og:description" content="Rychlý a přehledný e-mailový klient pro Windows a Mac. Bez serveru, bez AI, bez reklam, bez registrace, zdarma.">
+<meta property="og:image" content="https://pidgoo.com/app-light.webp">
 <title>pidgoo</title>
 <!-- pidgoo.com · web 2.2 · 2026-10-02 -->
-<meta name="description" content="pidgoo – rychlý a přehledný e-mailový klient pro Windows a Mac. Data šifrovaná AES-256, žádná AI, žádné sledování.">
+<meta name="description" content="pidgoo – rychlý a přehledný e-mailový klient pro Windows a Mac. Data šifrovaná AES-256 jen ve vašem zařízení. Bez vlastního serveru, bez AI, bez reklam, bez registrace a zcela zdarma.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
 <script>try { var t = localStorage.getItem('pidgoo-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) { /* bez úložiště – podle systému */ }</script>
@@ -101,15 +101,6 @@ h1 .mdot::after, h2 .mdot::after, h3 .mdot::after { top: .29em; width: .15em; he
 .idot::after { content: ''; position: absolute; left: 50%; top: .275em; width: .17em; height: .17em; border-radius: 50%; background: var(--coral); transform: translateX(-50%); }
 .lead { font-size: clamp(17px, 1.6vw, 19.5px); color: var(--ink2); max-width: 34em; margin: 24px 0 0; text-wrap: pretty; }
 .cta { display: flex; flex-direction: column; gap: 14px; }
-.dl-main { display: flex; align-items: center; gap: 14px; background: #FF7A59; color: #0F2A21; text-decoration: none; padding: 18px 22px; border-radius: 18px; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; box-shadow: 0 14px 32px -14px rgba(255, 122, 89, .65); }
-.dl-main:hover { transform: translateY(-2px); background: #FF8B6E; box-shadow: 0 18px 38px -14px rgba(255, 122, 89, .7); }
-.dl-main:focus-visible { outline: 3px solid #0F2A21; outline-offset: 3px; }
-.dl-main svg { width: 26px; height: 26px; flex-shrink: 0; }
-.dl-main b { display: block; font: 600 19px var(--display); letter-spacing: -.01em; }
-.dl-main span { display: block; font-size: 13px; opacity: .8; }
-.dl-main .arrow { margin-left: auto; width: 20px; height: 20px; opacity: .8; }
-.dl-alt { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
-.dl-alt a { color: var(--ink2); text-underline-offset: 3px; }
 .trust { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .trust > span { font-size: 12.5px; color: var(--ink2); border: 1px solid var(--line); background: var(--surface); padding: 4px 10px; border-radius: 999px; display: inline-flex; gap: 6px; align-items: center; }
 .trust svg { width: 13px; height: 13px; color: var(--accent); }
@@ -126,6 +117,17 @@ h1 .mdot::after, h2 .mdot::after, h3 .mdot::after { top: .29em; width: .15em; he
 /* ---------- funkce ---------- */
 section { scroll-margin-top: 80px; }
 .band { background: var(--band); padding-block: 40px 96px; }
+/* ---------- proč pidgoo ---------- */
+.band.why { padding-block: 56px 24px; }
+.why-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1000px) { .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .why-grid { grid-template-columns: minmax(0, 1fr); } }
+.why-item { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 20px 22px; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 14px; align-content: start; }
+.why-item .ic { grid-row: span 2; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.why-item .ic svg { width: 18px; height: 18px; }
+.why-item h3 { font: 600 16.5px/1.3 var(--display); letter-spacing: -.005em; margin: 6px 0 0; text-wrap: balance; }
+.why-item p { margin: 0; color: var(--ink2); font-size: 14.5px; line-height: 1.5; }
+.band.why + .band { padding-top: 72px; }
 .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: end; margin-bottom: 44px; }
 @media (max-width: 800px) { .sec-head { grid-template-columns: minmax(0, 1fr); gap: 12px; } }
 h2 { font: 600 clamp(32px, 4.2vw, 52px)/1.04 var(--display); letter-spacing: -.028em; margin: 10px 0 0; text-wrap: balance; }
@@ -147,7 +149,12 @@ h2 { font: 600 clamp(32px, 4.2vw, 52px)/1.04 var(--display); letter-spacing: -.0
 .secure { background: var(--dark-panel); color: var(--dark-ink); padding-block: 96px; }
 .secure .eyebrow { color: var(--mint); }
 :root[data-theme="dark"] .secure .eyebrow { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .secure .eyebrow { color: var(--accent); } }
 .secure h2 { color: var(--dark-ink); }
+.ag-row { display: flex; align-items: flex-end; gap: 18px; }
+.ag-row h2 { min-width: 0; }
+.agent { width: 96px; height: auto; flex: none; margin-bottom: -2px; }
+@media (max-width: 520px) { .agent { width: 68px; } .ag-row { gap: 14px; } }
 .secure .sec-head p { color: var(--dark-muted); }
 .sec-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: start; }
 @media (max-width: 900px) { .sec-grid { grid-template-columns: minmax(0, 1fr); } }
@@ -162,27 +169,60 @@ h2 { font: 600 clamp(32px, 4.2vw, 52px)/1.04 var(--display); letter-spacing: -.0
 .spec .d { color: #FF9B80; }
 .spec-note { font-size: 13.5px; color: var(--dark-muted); margin-top: 14px; }
 
-/* ---------- stažení ---------- */
-.download { padding-block: 96px 80px; }
-.platforms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-@media (max-width: 800px) { .platforms { grid-template-columns: minmax(0, 1fr); } }
-.plat { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; }
-.plat.recommended { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: 0 0 0 3px var(--accent-soft); }
-.plat-head { display: flex; align-items: center; gap: 14px; }
-.plat-head svg { width: 30px; height: 30px; }
-.plat-head h3 { font: 600 24px var(--display); margin: 0; letter-spacing: -.015em; }
-.plat-head .tag { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 16px var(--body); text-decoration: none; padding: 14px 20px; border-radius: 14px; background: var(--accent); color: var(--accent-ink); }
-.btn:hover { filter: brightness(1.06); }
-.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-.btn svg { width: 18px; height: 18px; }
-.btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn-row .btn { flex: 1 1 200px; }
-.meta { font: 400 13px var(--mono); color: var(--muted); }
-.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: s; }
-.steps li { counter-increment: s; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 15px; color: var(--ink2); }
-.steps li::before { content: counter(s); width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 600 12.5px var(--body); display: grid; place-items: center; margin-top: 1px; }
-.note { font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 14px; }
+/* ---------- šifrovaná pošta ---------- */
+.e2e { padding-block: 96px 40px; }
+.e2e-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 900px) { .e2e-grid { grid-template-columns: minmax(0, 1fr); } }
+.e2e-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 8px; }
+.e2e-card .ic { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--coral-soft); color: var(--coral); margin-bottom: 6px; }
+.e2e-card .ic svg { width: 19px; height: 19px; }
+.e2e-card h3 { font: 600 19px/1.25 var(--display); letter-spacing: -.01em; margin: 0; }
+.e2e-card p { margin: 0; color: var(--ink2); font-size: 15px; }
+.e2e-path { font: 500 13px var(--mono); color: var(--accent); }
+/* jak to funguje */
+.how { margin-top: 56px; display: grid; gap: 22px; }
+.how-title { font: 600 24px/1.2 var(--display); letter-spacing: -.015em; margin: 0; }
+.how-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px 20px; }
+@media (max-width: 1000px) { .how-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .how-steps { grid-template-columns: minmax(0, 1fr); } }
+.how-step { border-top: 2px solid var(--accent); padding-top: 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.how-n { font: 600 13px var(--mono); color: var(--coral); }
+.how-step h3 { font: 600 17px/1.3 var(--display); margin: 0; text-wrap: balance; }
+.how-step p { margin: 0; color: var(--ink2); font-size: 14.5px; line-height: 1.55; }
+.env { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; margin-top: 6px; }
+@media (max-width: 700px) { .env { grid-template-columns: minmax(0, 1fr); } }
+.env-col { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.env-col b { font: 600 13px var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.env-lock { border-color: var(--accent); background: var(--accent-soft); }
+.env-lock b { color: var(--accent); }
+.env-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; font-size: 14.5px; color: var(--ink); }
+.env-row > span:first-child { color: var(--muted); }
+.env-row code { font: 400 13.5px var(--mono); color: var(--ink2); overflow-wrap: anywhere; }
+.raw { grid-column: 1 / -1; background: var(--surface); border: 1px dashed var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.raw > b { font: 600 13px var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.raw-mail { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.raw-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; font-size: 14.5px; }
+.raw-row > span:first-child { color: var(--muted); }
+.raw-row code { font: 400 13.5px var(--mono); color: var(--ink2); }
+.raw-empty { color: var(--muted); font-style: italic; }
+.raw-files { display: flex; flex-wrap: wrap; gap: 8px; }
+.raw-files code { border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; background: var(--bg); }
+.raw-pgp { margin: 4px 0 0; padding: 14px 16px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font: 400 12.5px/1.6 var(--mono); color: var(--muted); overflow-x: auto; white-space: pre; }
+.env-note { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 14px; max-width: 60em; }
+.e2e-foot { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; color: var(--muted); font-size: 14px; }
+.e2e-foot span.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 5px 11px; font: 400 13px var(--mono); color: var(--ink2); }
+
+/* ---------- odznaky obchodů ---------- */
+.badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.badge { display: inline-flex; border-radius: 10px; line-height: 0; }
+.badge img { height: 52px; width: auto; display: block; }
+.hero-badges { width: fit-content; max-width: 100%; background: #FF7A59; padding: 16px 18px; border-radius: 18px; box-shadow: 0 14px 32px -14px rgba(255, 122, 89, .65); }
+.hero-badges .badge img { height: 46px; }
+@media (max-width: 480px) { .hero-badges { padding: 14px; flex-direction: column; align-items: stretch; } .hero-badges .badge img { height: 44px; } }
+.badge:focus-visible { outline: 3px solid #0F2A21; outline-offset: 3px; }
+.dl-meta { font-size: 14px; color: var(--muted); }
+.soon { display: inline-flex; align-items: center; gap: 8px; width: fit-content; font-size: 13.5px; font-weight: 600; color: var(--ink); background: var(--coral-soft); padding: 5px 12px; border-radius: 999px; }
+.soon svg { width: 15px; height: 15px; color: var(--coral); }
 
 footer { border-top: 1px solid var(--line); padding-block: 36px 48px; color: var(--muted); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
@@ -206,9 +246,11 @@ footer a:hover { color: var(--ink); }
     <a class="logo" href="#top" aria-label="pidgoo"><img src="icon.svg" alt="" width="32" height="32"><svg aria-hidden="true" style="color:var(--ink)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 104"><g transform="translate(2,78)"><g fill="currentColor"><path transform="translate(0.00,0) scale(0.09600,-0.09600)" d="M326 -10Q273.75 -10 231.75 11.25Q189.75 32.5 164.625 69.75Q139.5 107 137.5 154.5V326Q139.5 373.5 165.0 411.375Q190.5 449.25 232.4746376811594 471.125Q274.4492753623188 493 326 493Q393 493 446.0 459.75Q499 426.5 529.5 369.625Q560 312.75 560 240.75Q560 169.5 529.5 112.75Q499 56 446.0 23.0Q393 -10 326 -10ZM57.5 -202.5V483H189V356.11547085201795L166.75 238.5L187.75 121.5V-202.5ZM303.1418269230769 111Q339.34375 111 366.921875 127.625Q394.5 144.25 410.25 173.76712328767124Q426 203.28424657534248 426 241.59246575342465Q426 280 410.25 309.375Q394.5 338.75 366.9830097087379 355.375Q339.4660194174757 372 303.4830097087379 372Q267.5 372 239.6268115942029 355.4546703296703Q211.7536231884058 338.90934065934067 196.3768115942029 309.46153846153845Q181 280.0137362637363 181 241.53296703296704Q181 203.25 196.25 173.75Q211.5 144.25 239.375 127.625Q267.25 111 303.1418269230769 111Z"/><path transform="translate(54.95,0) scale(0.09600,-0.09600)" d="M57.5 0V483H189V0Z"/><path transform="translate(77.16,0) scale(0.09600,-0.09600)" d="M261.5 -10Q194.5 -10 141.53911042944785 22.980263157894736Q88.5782208588957 55.96052631578947 58.03911042944785 112.73026315789474Q27.5 169.5 27.5 240.90853658536585Q27.5 313.0914634146341 58.0 369.79573170731703Q88.5 426.5 141.35576923076923 459.75Q194.21153846153845 493 261.5 493Q313.75 493 355.375 471.75Q397 450.5 422.625 413.25Q448.25 376 450 328.5V157Q448.25 109.5 423.0 71.625Q397.75 33.75 355.75 11.875Q313.75 -10 261.5 -10ZM284 111Q321 111 348.28952205882354 127.62332214765101Q375.5790441176471 144.24664429530202 391.03952205882354 173.623322147651Q406.5 203 406.5 241.5Q406.5 280.29009433962267 391.0923913043478 309.4492924528302Q375.6847826086956 338.60849056603774 348.3423913043478 355.3042452830189Q321 372 284.625 372Q248.25 372 220.8080985915493 355.2381516587678Q193.3661971830986 338.47630331753555 177.4330985915493 309.07582938388623Q161.5 279.67535545023696 161.5 241.5Q161.5 203.25 177.189039408867 173.78Q192.87807881773398 144.31 220.74137931034483 127.655Q248.60467980295567 111 284 111ZM530 0H399.75V129.75L420.75 247.5L398.5 364.25V723H530Z"/><path transform="translate(132.11,0) scale(0.09600,-0.09600)" d="M260.25 -214Q182.5 -214 123.75 -186.5Q65 -159 30 -109L113 -26.25Q140.5 -59.5 175.25 -76.625Q210 -93.75 259 -93.75Q319.75 -93.75 355.125 -62.875Q390.5 -32 390.5 22.5V143.5L412.75 249.5L391.75 356V483H522V24.5Q522 -47.5 488.5 -100.875Q455 -154.25 396.0 -184.125Q337 -214 260.25 -214ZM254.25 12.5Q189 12.5 137.125 44.125Q85.25 75.75 55.625 130.75Q26 185.75 26 253.5Q26 321.5 55.625 375.625Q85.25 429.75 137.125 461.375Q189 493 254.25 493Q307.75 493 349.125 472.125Q390.5 451.25 414.625 414.375Q438.75 377.5 440.5 328.5V177Q438.75 128.75 414.25 91.5Q389.75 54.25 348.375 33.375Q307 12.5 254.25 12.5ZM279.75 132.25Q315.75 132.25 342.5 147.75Q369.25 163.25 383.875 190.375Q398.5 217.5 398.5 253Q398.5 288.5 383.875 315.625Q369.25 342.75 342.625 358.25Q316 373.75 280 373.75Q244.25 373.75 217.125 358.25Q190 342.75 175.0 315.5Q160 288.25 160 253Q160 218.75 175.0 191.125Q190 163.5 217.0 147.875Q244 132.25 279.75 132.25Z"/><path transform="translate(186.19,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/><path transform="translate(239.32,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/></g><circle cx="66.78" cy="-59.50" r="7.83" fill="#FF7A59"/></g></svg></a>
     <nav class="nav-links" aria-label="Sekce">
       <a class="nav-support" href="https://ko-fi.com/pidgoo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1.5a3.5 3.5 0 0 1 0 7H17"/><path d="M3 8h14v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V8Z"/><path d="M7 2.5c-.6.8-.6 1.7 0 2.5M11 2.5c-.6.8-.6 1.7 0 2.5M15 2.5c-.6.8-.6 1.7 0 2.5"/></svg><span data-i18n="nav.support">Podpořit</span></a>
+      <a href="#proc" data-i18n="nav.why">Proč pidgoo</a>
       <a href="#funkce" data-i18n="nav.features">Funkce</a>
       <a href="#bezpecnost" data-i18n="nav.security">Bezpečnost</a>
-      <a href="#stahnout" data-i18n="nav.download">Stáhnout</a>
+      <a href="#sifrovani" data-i18n="nav.e2e">Šifrování</a>
+      <a href="#top" data-i18n="nav.download">Stáhnout</a>
     </nav>
     <button type="button" class="theme-btn" id="theme-btn" aria-label="Světlý / tmavý vzhled" title="Světlý / tmavý vzhled" data-i18n-aria="theme.toggle"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <div class="lang" role="group" aria-label="Jazyk / Language">
@@ -221,17 +263,14 @@ footer a:hover { color: var(--ink); }
 <main id="top">
   <div class="wrap hero">
     <div>
-      <span class="eyebrow"><span data-i18n="hero.eyebrow">Bezpečný e-mail</span> · Windows · Mac <span class="pill pill-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-i18n="hero.sec">Šifrované, jen u vás</span></span><span class="pill" data-i18n="hero.pill">Zdarma, bez reklam</span></span>
+      <span class="eyebrow"><span data-i18n="hero.eyebrow">Bezpečný e-mail</span> · Windows · Mac <span class="pill pill-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-i18n="hero.sec">Šifrované, jen u vás</span></span><span class="pill" data-i18n="hero.pill">Zdarma, bez reklam a registrace</span></span>
       <h1 data-i18n-html="hero.title">Vaše pošta.<br><span class="nw">Pod kontrolou<span class="cdot">.</span></span></h1>
-      <p class="lead" data-i18n="hero.lead">Rychlá, přehledná a moderní e-mailová aplikace pro Windows a Mac. Bezpečnost je u nás na prvním místě – všechna data zůstávají zašifrovaná jen ve vašem počítači.</p>
+      <p class="lead" data-i18n="hero.lead">Rychlá, přehledná a moderní e-mailová aplikace pro Windows a Mac. Bezpečnost je u nás na prvním místě – všechna data zůstávají zašifrovaná jen ve vašem zařízení.</p>
     </div>
     <div class="cta">
-      <a class="dl-main" id="dl-main" href="#stahnout">
-        <span id="dl-main-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg></span>
-        <span><b id="dl-main-title">Stáhnout pro Windows</b><span id="dl-main-meta">Verze 2.1.0 · Windows 10 a 11 · 113 MB</span></span>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-      <div class="dl-alt" id="dl-alt"></div>
+      <div class="badges hero-badges"><a class="badge" data-store="win" href="https://apps.microsoft.com/detail/9MV1XQV4WPC2" target="_blank" rel="noopener"><img data-badge="win" src="https://get.microsoft.com/images/cs-cz%20dark.svg" alt="Stáhnout z Microsoft Store" height="56"></a><a class="badge" data-store="mac" href="https://apps.apple.com/app/id6818761345" target="_blank" rel="noopener"><img data-badge="mac" src="https://tools.applemarketingtools.com/api/badges/download-on-the-mac-app-store/black/cs-cz" alt="Stáhnout v Mac App Store" height="56"></a></div>
+      <div class="dl-meta" data-i18n="hero.req">Zdarma · Windows 10 a 11 · macOS 13 a novější (Apple Silicon i Intel)</div>
+      <div class="soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span data-i18n="hero.soon">iPhone a Android – již brzy</span></div>
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3M19 4l2 2"/></svg><span data-i18n="trust.aes">Šifrování AES-256</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-i18n="trust.noai">Žádná AI, žádné sledování</span></span>
@@ -249,6 +288,25 @@ footer a:hover { color: var(--ink); }
       <p class="caption" data-i18n="shot.caption">Skutečný snímek pidgoo · světlý i tmavý režim podle systému</p>
     </div>
   </div>
+
+  <section class="band why" id="proc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow" data-i18n="why.eyebrow">Proč pidgoo</span><h2 data-i18n="why.title">Jen vy a vaše pošta.</h2></div>
+        <p data-i18n="why.lead">Žádný prostředník mezi vámi a vaší schránkou. pidgoo nepotřebuje váš účet, vaše data ani vaše peníze – stačí, když ho používáte.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/><path d="m3 3 18 18"/></svg></span><h3 data-i18n="w1.t">Žádný vlastní server</h3><p data-i18n="w1.d">pidgoo se připojuje přímo k vašemu poštovnímu serveru. Vaše pošta nikdy neprojde přes nás.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/><rect x="7" y="7" width="10" height="10" rx="2"/><path d="m4 4 16 16"/></svg></span><h3 data-i18n="w2.t">Žádná AI</h3><p data-i18n="w2.d">Vaše e-maily nikdo nečte, neshrnuje a nic se na nich neučí. A tak to i zůstane.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15l2-6 2 6M7.6 13h2.8M14 9v6h1.2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H14"/><path d="m3 3 18 18"/></svg></span><h3 data-i18n="w3.t">Žádné reklamy ani sledování</h3><p data-i18n="w3.d">Bez reklam, bez analytiky a bez statistik používání. Nic o vás nesbíráme.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20a7 7 0 0 1 11.5-5.4"/><path d="m16 16 5 5M21 16l-5 5"/></svg></span><h3 data-i18n="w4.t">Bez registrace</h3><p data-i18n="w4.d">Žádný účet u pidgoo, žádný e-mail navíc. Stáhnete, přidáte svou schránku a můžete psát.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8"/><rect x="2.5" y="7" width="19" height="5" rx="1"/><path d="M12 21V7"/><path d="M12 7c-1.5-3-5-3.5-5-1s3.5 1 5 1c1.5 0 5 1.5 5-1s-3.5-2-5 1Z"/></svg></span><h3 data-i18n="w5.t">Zcela zdarma</h3><p data-i18n="w5.d">Všechny funkce pro všechny. Bez předplatného, bez placené verze a bez zkušební doby.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></span><h3 data-i18n="w6.t">Šifrování</h3><p data-i18n="w6.d">Data v zařízení šifruje AES-256. Šifrované e-maily (OpenPGP) zapnete jedním přepínačem.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/><path d="M10 10.5l1.5 1.5 3-3"/></svg></span><h3 data-i18n="w7.t">Data jen ve vašem zařízení</h3><p data-i18n="w7.d">Hesla a klíče zůstávají zašifrované u vás – nikdy v cloudu ani v zálohách.</p></article>
+        <article class="why-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3 data-i18n="w8.t">Všechny platformy, 9 jazyků</h3><p data-i18n="w8.d">Windows a Mac již teď, iPhone a Android brzy. Česky, anglicky a v dalších 7 jazycích.</p></article>
+      </div>
+    </div>
+  </section>
 
   <section class="band" id="funkce">
     <div class="wrap">
@@ -274,15 +332,16 @@ footer a:hover { color: var(--ink); }
   <section class="secure" id="bezpecnost">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="eyebrow" data-i18n="sec.eyebrow">Bezpečnost a soukromí</span><h2 data-i18n="sec.title">Vaše pošta zůstává vaše.</h2></div>
-        <p data-i18n="sec.lead">pidgoo nemá žádný server, přes který by vaše pošta šla. Připojuje se rovnou k vašemu poštovnímu serveru a v počítači ukládá jen to nutné – zašifrované.</p>
+        <div><span class="eyebrow" data-i18n="sec.eyebrow">Bezpečnost a soukromí</span><div class="ag-row"><svg class="agent" viewBox="26 18 64 72" aria-hidden="true"> <path d="M32 86 C 32 70 36 62 42 58 L 64 58 C 70 62 73 72 73 86 Z" fill="#2C7A5C"/> <circle cx="54" cy="42" r="20" fill="#D3F5E2"/> <path d="M46 60 L 56 79 L 65 60 Q 56 64 46 60 Z" fill="#FFFFFF"/> <path d="M54 62.5 L 58 62.5 L 59.2 72 L 56 77 L 52.8 72 Z" fill="#FF7A59"/> <path d="M46 60 L 52 71 L 49 72 L 42 61 Z M65 60 L 60.5 71 L 63.5 72 L 69 62 Z" fill="#1E5E46"/> <path d="M34.5 37 L 52 36.5" stroke="#0B1612" stroke-width="2.6" stroke-linecap="round"/> <path d="M51 33.5 H 70 Q 72 33.5 71.5 36 L 70.5 40.5 Q 69.8 44 66 44 H 56 Q 52 44 51.3 40.5 L 50.6 36 Q 50.3 33.5 51 33.5 Z" fill="#0B1612"/> <path d="M55 36.3 L 60 36.3" stroke="#FF7A59" stroke-width="1.4" stroke-linecap="round" opacity=".9"/> <path d="M72 41 L 85 46 L 72 51 Z" fill="#FF7A59"/> </svg><h2 data-i18n="sec.title">Vaše pošta zůstává vaše.</h2></div></div>
+        <p data-i18n="sec.lead">pidgoo nemá žádný server, přes který by vaše pošta šla. Připojuje se rovnou k vašemu poštovnímu serveru a v zařízení ukládá jen to nutné – zašifrované.</p>
       </div>
       <div class="sec-grid">
         <div class="promises">
           <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3M19 4l2 2"/></svg><div><b data-i18n="p1.t">Heslo je klíč k datům</b><span data-i18n="p1.d">Účty, hesla, kontakty i úkoly jsou v jednom souboru šifrovaném AES-256. S heslem k pidgoo je nepřečte nikdo – ani po vyjmutí disku.</span></div></div>
-          <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><b data-i18n="p2.t">E-maily zůstávají na serveru</b><span data-i18n="p2.d">pidgoo si poštu nestahuje do počítače. Obrázky z internetu se načtou až po vašem svolení, takže vás odesílatelé nesledují.</span></div></div>
+          <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><b data-i18n="p2.t">E-maily zůstávají na serveru</b><span data-i18n="p2.d">pidgoo si poštu nestahuje do zařízení. Obrázky z internetu se načtou až po vašem svolení, takže vás odesílatelé nesledují.</span></div></div>
           <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><div><b data-i18n="p3.t">Žádná AI, žádná analytika</b><span data-i18n="p3.d">Vaše e-maily nikdo nečte, netrénuje na nich a nikam je neposílá. pidgoo neodesílá ani statistiky používání.</span></div></div>
           <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><b data-i18n="p4.t">Škodlivé přílohy neprojdou</b><span data-i18n="p4.d">Programy a skripty převlečené za dokumenty pidgoo neotevře a každá příloha dostane značku „staženo z internetu“.</span></div></div>
+          <div class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><div><b data-i18n="p5.t">Šifrované e-maily (volitelně)</b><span data-i18n="p5.d">Se šifrováním zapnutým v nastavení pidgoo zašifruje zprávu i její předmět tak, že ji přečte jen adresát. Podpis ukáže, že ji opravdu poslal odesílatel.</span></div></div>
         </div>
         <div>
           <pre class="spec" aria-label="Technické parametry" data-i18n-html="spec"><span class="c"># pidgoo-vault.json</span>
@@ -293,47 +352,58 @@ footer a:hover { color: var(--ink); }
 <span class="c"># spojení</span>
 <span class="k">tls</span>         1.2+ · ověřený certifikát
 <span class="k">plaintext</span>   <span class="d">zakázáno</span>
-<span class="k">oauth</span>       PKCE S256 · Google, Microsoft</pre>
-          <p class="spec-note" data-i18n="sec.note">Kód prošel nezávislým bezpečnostním auditem a penetračními testy. Technický dokument pro odborníky je součástí každého vydání.</p>
+<span class="k">oauth</span>       PKCE S256 · Google, Microsoft
+<span class="c"># šifrované e-maily (volitelné)</span>
+<span class="k">e2e</span>         OpenPGP · Autocrypt · <span class="d">vypnuto</span> po instalaci
+<span class="k">keys</span>        Ed25519 · X25519 · AES-256</pre>
+          <p class="spec-note" data-i18n="sec.note">Každé vydání prochází důkladnou bezpečnostní revizí kódu a útočnými testy. Technický dokument pro odborníky je jeho součástí.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="download" id="stahnout">
+  <section class="e2e" id="sifrovani">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="eyebrow" data-i18n="dl.eyebrow">Stáhnout</span><h2 data-i18n="dl.title">Nainstalované za minutu.</h2></div>
-        <p data-i18n="dl.lead">Klasický instalátor pro Windows i Mac. pidgoo je zdarma, bez reklam a bez registrace – po spuštění jen přidáte svůj e-mail.</p>
+        <div><span class="eyebrow" data-i18n="e2e.eyebrow">Novinka ve verzi 2.4</span><h2 data-i18n="e2e.title">Šifrovaná pošta, když ji chcete.</h2></div>
+        <p data-i18n="e2e.lead">Zprávu mezi dvěma lidmi, kteří šifrování zapnuli, přečte jen adresát. Ani poštovní server, ani nikdo po cestě. Žádná hesla navíc a nic se nemusí domlouvat.</p>
       </div>
-      <div class="platforms">
-        <article class="plat" id="plat-win">
-          <div class="plat-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg><h3>Windows</h3><span class="tag" data-i18n="dl.yours" hidden>Váš systém</span></div>
-          <div class="btn-row"><a class="btn" data-file="win" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span data-i18n="dl.win">Stáhnout instalátor</span></a></div>
-          <div class="meta" id="meta-win">pidgoo-setup.exe · 113 MB · Windows 10 / 11 (64 bit)</div>
-          <ol class="steps">
-            <li data-i18n="w1">Otevřete stažený soubor pidgoo-setup.exe.</li>
-            <li data-i18n="w2">Průvodce se zeptá, kam pidgoo nainstalovat – stačí nechat výchozí složku.</li>
-            <li data-i18n="w3">Po dokončení pidgoo najdete v nabídce Start (a volitelně na ploše).</li>
-          </ol>
-        </article>
-        <article class="plat" id="plat-mac">
-          <div class="plat-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4.5" width="16" height="11" rx="1.8"/><path d="M1.8 18.5h20.4l-1.2 1.5H3z"/></svg><h3>macOS</h3><span class="tag" data-i18n="dl.yours" hidden>Váš systém</span></div>
-          <div class="btn-row">
-            <a class="btn" data-file="mac-arm" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span data-i18n="dl.macArm">Apple Silicon</span></a>
-            <a class="btn ghost" data-file="mac-intel" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span data-i18n="dl.macIntel">Intel</span></a>
+      <div class="e2e-grid">
+        <article class="e2e-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><circle cx="16" cy="12" r="3"/></svg></span><h3 data-i18n="e1.t">Zapnete jedním přepínačem</h3><p data-i18n="e1.d">Po instalaci je šifrování vypnuté. Zapnete ho v nastavení a pidgoo si samo vytvoří klíč. Můžete šifrovat vždy, když to druhá strana umí, nebo jen vybrané zprávy.</p><span class="e2e-path" data-i18n="e1.path">Nastavení → Šifrování</span></article>
+        <article class="e2e-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></span><h3 data-i18n="e2.t">Zámek jen tam, kde to jde</h3><p data-i18n="e2.d">Zámek se u zprávy objeví, jen když šifrovat jde. Ostatním píšete jako dřív. Funguje i s jinými aplikacemi, které používají otevřený standard OpenPGP.</p></article>
+        <article class="e2e-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3M19 4l2 2"/></svg></span><h3 data-i18n="e3.t">Klíč máte jen vy</h3><p data-i18n="e3.d">Tajný klíč zůstává zašifrovaný ve vašem zařízení. Do dalšího zařízení ho přenesete záložním souborem, který odemkne jen 36místný kód na papíře.</p></article>
+      </div>
+      <div class="how">
+        <h3 class="how-title" data-i18n="how.title">Jak to funguje</h3>
+        <ol class="how-steps">
+          <li class="how-step"><span class="how-n">1</span><h3 data-i18n="h1.t">Klíč vznikne u vás</h3><p data-i18n="h1.d">Po zapnutí si pidgoo ve vašem zařízení vytvoří pár klíčů: tajný, který zůstává zašifrovaný jen u vás, a veřejný, který tajný není a může ho mít kdokoli.</p></li>
+          <li class="how-step"><span class="how-n">2</span><h3 data-i18n="h2.t">Veřejný klíč jede s e-mailem</h3><p data-i18n="h2.d">Ke každé zprávě pidgoo přidá hlavičku Autocrypt s vaším veřejným klíčem. Druhá strana si ho uloží sama – bez serveru klíčů a bez domlouvání.</p></li>
+          <li class="how-step"><span class="how-n">3</span><h3 data-i18n="h3.t">Zamknout a podepsat</h3><p data-i18n="h3.d">Když pidgoo zná klíč adresáta, zprávu zamkne jeho veřejným klíčem (OpenPGP, AES-256) a podepíše vaším tajným. Zamkne i předmět a přílohy.</p></li>
+          <li class="how-step"><span class="how-n">4</span><h3 data-i18n="h4.t">Otevře ji jen adresát</h3><p data-i18n="h4.d">Odemknout ji umí jen tajný klíč v zařízení adresáta. Podpis potvrdí, že zprávu opravdu poslal ten, kdo je uveden, a že ji cestou nikdo nezměnil.</p></li>
+        </ol>
+        <div class="env">
+          <div class="env-col"><b data-i18n="env.srv">Poštovní server vidí</b><span class="env-row"><span data-i18n="env.from">Od</span><code>jana@example.cz</code></span><span class="env-row"><span data-i18n="env.to">Komu</span><code>petr@example.cz</code></span><span class="env-row"><span data-i18n="env.date">Datum</span><code>2026-10-16 10:42</code></span><span class="env-row"><span data-i18n="env.subj">Předmět</span><code>...</code></span></div>
+          <div class="env-col env-lock"><b data-i18n="env.rcpt">Jen adresát vidí</b><span class="env-row"><span data-i18n="env.subj">Předmět</span><span data-i18n="env.s1">skutečný předmět</span></span><span class="env-row"><span data-i18n="env.body">Text</span><span data-i18n="env.s2">celou zprávu</span></span><span class="env-row"><span data-i18n="env.att">Přílohy</span><span data-i18n="env.s3">všechny soubory</span></span></div>
+          <div class="raw">
+            <b data-i18n="raw.title">Takto ji uvidíte v jiné poštovní aplikaci nebo ve webové schránce</b>
+            <div class="raw-mail">
+              <span class="raw-row"><span data-i18n="env.subj">Předmět</span><code>...</code></span>
+              <span class="raw-row"><span data-i18n="env.body">Text</span><span class="raw-empty" data-i18n="raw.empty">prázdný</span></span>
+              <span class="raw-row"><span data-i18n="env.att">Přílohy</span><span class="raw-files"><code>Version: 1</code><code>encrypted.asc</code></span></span>
+<pre class="raw-pgp" aria-label="encrypted.asc">-----BEGIN PGP MESSAGE-----
+
+wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
+0sCxAfT8nGmQe1Wb6yVhJd3uKo5pRa7LcN2xE…
+-----END PGP MESSAGE-----</pre>
+            </div>
           </div>
-          <div class="meta" id="meta-mac">pidgoo.dmg · 133 MB · M1–M4 / Intel · macOS 13+</div>
-          <ol class="steps">
-            <li data-i18n="m1">Otevřete stažený soubor pidgoo.dmg.</li>
-            <li data-i18n="m2">V okně přetáhněte ikonu pidgoo do složky Aplikace.</li>
-            <li data-i18n="m3">Spusťte pidgoo z Launchpadu nebo ze složky Aplikace.</li>
-          </ol>
-          <p class="note" data-i18n="dl.whichMac">Nevíte, jaký máte Mac? V menu Apple → O tomto Macu najdete řádek „Čip“ (Apple M…) nebo „Procesor“ (Intel).</p>
-        </article>
+          <p class="env-note" data-i18n="env.note">Dokud nemáte klíč adresáta, odchází normální pošta – zamyká se, až když to druhá strana umí otevřít. Adresy a čas zůstávají vidět, protože je server potřebuje k doručení. Šifrování dělá jedno jádro napsané v jazyce Rust – stejné ve Windows, na Macu, v iPhonu i Androidu – a funguje i s jinými aplikacemi, které používají otevřený standard OpenPGP.</p>
+        </div>
       </div>
+      <div class="e2e-foot"><span data-i18n="e2e.std">Standardy:</span><span class="chip">OpenPGP</span><span class="chip">Autocrypt</span><span class="chip">AES-256</span><span class="chip">Curve25519</span><span class="chip" data-i18n="e2e.subj">skrytý předmět</span></div>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -345,29 +415,45 @@ footer a:hover { color: var(--ink); }
       <a href="mailto:hello@pidgoo.com" class="nodot">hello@pidgoo.com</a>
       <a href="soukromi.html" id="privacy-link" data-i18n="foot.privacy">Soukromí</a>
       <a href="podminky.html" id="terms-link" data-i18n="foot.terms">Podmínky</a>
+      <a href="#proc" data-i18n="nav.why">Proč pidgoo</a>
       <a href="#funkce" data-i18n="nav.features">Funkce</a>
       <a href="#bezpecnost" data-i18n="nav.security">Bezpečnost</a>
-      <a href="#stahnout" data-i18n="nav.download">Stáhnout</a>
+      <a href="#top" data-i18n="nav.download">Stáhnout</a>
     </div>
   </div>
 </footer>
 
 <script>
 (function () {
-  // Kde leží instalátory (GitHub Releases – odkaz „latest“ vede vždy na nejnovější verzi)
-  var RELEASES = 'https://github.com/jaroslavmistoler-pixel/pidgoo/releases/latest/download/';
-  var FILES = { win: 'pidgoo-setup.exe', 'mac-arm': 'pidgoo-applesilicon.dmg', 'mac-intel': 'pidgoo-intel.dmg' };
-  var REPO_API = 'https://api.github.com/repos/jaroslavmistoler-pixel/pidgoo/releases/latest';
-  var VERSION = '2.1.0';
-  var SIZE = { win: 113, 'mac-arm': 133, 'mac-intel': 139 }; // MB – přepíše se podle skutečného vydání
+  // pidgoo se instaluje jen z obchodů (Microsoft Store, Mac App Store) – aktualizace tam chodí samy
+  var STORE = { win: 'https://apps.microsoft.com/detail/9MV1XQV4WPC2', mac: 'https://apps.apple.com/app/id6818761345' };
 
   var EN = {
-    'nav.features': 'Features', 'nav.security': 'Security', 'nav.download': 'Download', 'nav.support': 'Support', 'theme.toggle': 'Light / dark theme', 'foot.support': 'Support pidgoo', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
+    'nav.features': 'Features', 'nav.security': 'Security', 'nav.e2e': 'Encryption', 'nav.download': 'Download', 'nav.support': 'Support', 'theme.toggle': 'Light / dark theme', 'foot.support': 'Support pidgoo', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
     'hero.eyebrow': 'Secure email',
-    'hero.sec': 'Encrypted, only on your computer',
-    'hero.pill': 'Free, no ads',
+    'hero.sec': 'Encrypted, only on your device',
+    'hero.pill': 'Free, no ads, no sign-up',
+    'how.title': 'How it works',
+    'h1.t': 'Your key is made on your device', 'h1.d': 'When you turn it on, pidgoo creates a key pair on your device: a secret key that stays encrypted with you, and a public key that is not secret and anyone may have.',
+    'h2.t': 'The public key travels with your email', 'h2.d': 'pidgoo adds an Autocrypt header with your public key to every message. The other side stores it automatically – no key server and nothing to arrange.',
+    'h3.t': 'Lock and sign', 'h3.d': 'Once pidgoo knows the recipient’s key, it locks the message with that public key (OpenPGP, AES-256) and signs it with your secret key. The subject and attachments are locked too.',
+    'h4.t': 'Only the recipient can open it', 'h4.d': 'Only the secret key on the recipient’s device can unlock it. The signature confirms the message really came from the stated sender and was not changed on the way.',
+    'env.srv': 'The mail server sees', 'env.rcpt': 'Only the recipient sees', 'env.from': 'From', 'env.to': 'To', 'env.date': 'Date', 'env.subj': 'Subject', 'env.body': 'Text', 'env.att': 'Attachments',
+    'raw.title': 'This is how it looks in another email app or in webmail', 'raw.empty': 'empty',
+    'env.s1': 'the real subject', 'env.s2': 'the whole message', 'env.s3': 'all files',
+    'env.note': 'Until you have the recipient’s key, regular email goes out – messages are locked only when the other side can open them. Addresses and time stay visible because the server needs them to deliver the message. Encryption is done by a single core written in Rust – the same on Windows, Mac, iPhone and Android – and it works with other apps that use the open OpenPGP standard.',
+    'nav.why': 'Why pidgoo', 'why.eyebrow': 'Why pidgoo', 'why.title': 'Just you and your email.',
+    'why.lead': 'Nothing stands between you and your mailbox. pidgoo does not need your account, your data or your money – all it needs is for you to use it.',
+    'w1.t': 'No server of our own', 'w1.d': 'pidgoo connects straight to your mail server. Your email never passes through us.',
+    'w2.t': 'No AI', 'w2.d': 'Nobody reads your email, summarises it or trains on it. And it will stay that way.',
+    'w3.t': 'No ads, no tracking', 'w3.d': 'No ads, no analytics and no usage statistics. We collect nothing about you.',
+    'w4.t': 'No sign-up', 'w4.d': 'No pidgoo account, no extra email address. Download, add your mailbox and start writing.',
+    'w5.t': 'Completely free', 'w5.d': 'Every feature for everyone. No subscription, no paid tier and no trial period.',
+    'w6.t': 'Encryption', 'w6.d': 'Data on your device is encrypted with AES-256. Turn on encrypted email (OpenPGP) with one switch.',
+    'w7.t': 'Data only on your device', 'w7.d': 'Passwords and keys stay encrypted with you – never in the cloud or in backups.',
+    'w8.t': 'Every platform, 9 languages', 'w8.d': 'Windows and Mac today, iPhone and Android soon. English, Czech and 7 more languages.',
     'hero.title': 'Your inbox.<br><span class="nw">In control<span class="cdot">.</span></span>',
-    'hero.lead': 'A fast, clear and modern email app for Windows and Mac. Security comes first – all your data stays encrypted, only on your computer.',
+    'hero.lead': 'A fast, clear and modern email app for Windows and Mac. Security comes first – all your data stays encrypted, only on your device.',
     'trust.aes': 'AES-256 encryption', 'trust.noai': 'No AI, no tracking',
     'shot.alt': 'pidgoo – inbox split into Important, Notifications and Newsletters, an open email with attachments and quick replies on the right',
     'shot.altDark': 'pidgoo in dark mode',
@@ -385,19 +471,21 @@ footer a:hover { color: var(--ink); }
     'f9.t': 'Keyboard first', 'f9.d': '<kbd>J</kbd>/<kbd>K</kbd> to move, <kbd>E</kbd> archive, <kbd>R</kbd> reply, <kbd>Ctrl</kbd>+<kbd>K</kbd> commands. The mouse is optional.',
     'acc.label': 'Works with', 'acc.imap': 'any IMAP / SMTP',
     'sec.eyebrow': 'Security and privacy', 'sec.title': 'Your email stays yours.',
-    'sec.lead': 'pidgoo has no server your email passes through. It connects straight to your mail server and stores only what it must on your computer – encrypted.',
+    'sec.lead': 'pidgoo has no server your email passes through. It connects straight to your mail server and stores only what it must on your device – encrypted.',
     'p1.t': 'Your password is the key', 'p1.d': 'Accounts, passwords, contacts and tasks live in one AES-256 encrypted file. With a pidgoo password nobody can read them – not even from a removed disk.',
-    'p2.t': 'Email stays on the server', 'p2.d': 'pidgoo does not download your mail to disk. Remote images load only with your permission, so senders cannot track you.',
+    'p2.t': 'Email stays on the server', 'p2.d': 'pidgoo does not download your mail to your device. Remote images load only with your permission, so senders cannot track you.',
     'p3.t': 'No AI, no analytics', 'p3.d': 'Nobody reads your email, trains on it or sends it anywhere. pidgoo does not even send usage statistics.',
     'p4.t': 'Malicious attachments stay shut', 'p4.d': 'Programs and scripts disguised as documents are never opened, and every attachment is marked as downloaded from the internet.',
-    'spec': '<span class="c"># pidgoo-vault.json</span>\n<span class="k">cipher</span>      AES-256-GCM\n<span class="k">key</span>         scrypt · N=2<sup>17</sup> · 128 MB <span class="c">/ attempt</span>\n<span class="k">device</span>      <span class="d">DPAPI</span> · <span class="d">macOS Keychain</span>\n<span class="k">recovery</span>    80 bits of randomness\n<span class="c"># connections</span>\n<span class="k">tls</span>         1.2+ · verified certificate\n<span class="k">plaintext</span>   <span class="d">refused</span>\n<span class="k">oauth</span>       PKCE S256 · Google, Microsoft',
-    'sec.note': 'The code passed an independent security audit and penetration testing. A technical document for experts ships with every release.',
-    'dl.eyebrow': 'Download', 'dl.title': 'Installed in a minute.',
-    'dl.lead': 'A classic installer for Windows and Mac. pidgoo is free, without ads or sign-up – after launch you just add your email.',
-    'dl.yours': 'Your system', 'dl.win': 'Download installer', 'dl.macArm': 'Apple Silicon', 'dl.macIntel': 'Intel', 
-    'w1': 'Open the downloaded pidgoo-setup.exe.', 'w2': 'The wizard asks where to install pidgoo – the default folder is fine.', 'w3': 'When it finishes, pidgoo is in the Start menu (and optionally on the desktop).',
-    'm1': 'Open the downloaded pidgoo.dmg.', 'm2': 'In the window, drag the pidgoo icon onto the Applications folder.', 'm3': 'Launch pidgoo from Launchpad or the Applications folder.',
-    'dl.whichMac': 'Not sure which Mac you have? Open the Apple menu → About This Mac and look for “Chip” (Apple M…) or “Processor” (Intel).'
+    'spec': '<span class="c"># pidgoo-vault.json</span>\n<span class="k">cipher</span>      AES-256-GCM\n<span class="k">key</span>         scrypt · N=2<sup>17</sup> · 128 MB <span class="c">/ attempt</span>\n<span class="k">device</span>      <span class="d">DPAPI</span> · <span class="d">macOS Keychain</span>\n<span class="k">recovery</span>    80 bits of randomness\n<span class="c"># connections</span>\n<span class="k">tls</span>         1.2+ · verified certificate\n<span class="k">plaintext</span>   <span class="d">refused</span>\n<span class="k">oauth</span>       PKCE S256 · Google, Microsoft\n<span class="c"># encrypted email (optional)</span>\n<span class="k">e2e</span>         OpenPGP · Autocrypt · <span class="d">off</span> after install\n<span class="k">keys</span>        Ed25519 · X25519 · AES-256',
+    'p5.t': 'Encrypted email (optional)', 'p5.d': 'With encryption turned on in settings, pidgoo encrypts the message and its subject so only the recipient can read it. The signature shows it really came from the sender.',
+    'e2e.eyebrow': 'New in version 2.4', 'e2e.title': 'Encrypted email, when you want it.',
+    'e2e.lead': 'A message between two people who turned encryption on can be read only by the recipient. Not the mail server, not anyone along the way. No extra passwords and nothing to arrange.',
+    'e1.t': 'One switch to turn it on', 'e1.d': 'Encryption is off after install. Turn it on in settings and pidgoo creates your key by itself. Encrypt whenever the other side can, or only the messages you choose.', 'e1.path': 'Settings → Encryption',
+    'e2.t': 'A lock only where it works', 'e2.d': 'The lock shows up on a message only when encryption is possible. Everyone else you write to as before. It also works with other apps that use the open OpenPGP standard.',
+    'e3.t': 'Only you hold the key', 'e3.d': 'Your secret key stays encrypted on your device. Move it to another device with a backup file that only a 36-digit code on paper can unlock.',
+    'e2e.std': 'Standards:', 'e2e.subj': 'hidden subject',
+    'sec.note': 'Every release goes through a thorough security code review and attack testing. A technical document for experts ships with it.',
+    'hero.req': 'Free · Windows 10 and 11 · macOS 13 or later (Apple Silicon and Intel)', 'hero.soon': 'iPhone and Android – coming soon'
   };
   var CS = {};
   // Česká verze = co je v HTML (uložíme si ji pro přepínání zpět)
@@ -407,17 +495,14 @@ footer a:hover { color: var(--ink); }
   document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { CS[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
 
   var UI = {
-    cs: { win: 'Stáhnout pro Windows', mac: 'Stáhnout pro Mac', ver: 'Verze ', winSys: 'Windows 10 a 11', other: 'Jiný systém:', intel: 'Mac s Intelem', winLink: 'Windows', macLink: 'Mac' },
-    en: { win: 'Download for Windows', mac: 'Download for Mac', ver: 'Version ', winSys: 'Windows 10 and 11', other: 'Other system:', intel: 'Intel Mac', winLink: 'Windows', macLink: 'Mac' }
+    cs: { win: 'Stáhnout z Microsoft Store', mac: 'Stáhnout v Mac App Store', winSys: 'Windows 10 a 11 · zdarma', macSys: 'macOS 13+ · Apple Silicon i Intel · zdarma', other: 'Jiný systém:', winLink: 'Windows (Microsoft Store)', macLink: 'Mac (Mac App Store)' },
+    en: { win: 'Get it from Microsoft Store', mac: 'Get it from the Mac App Store', winSys: 'Windows 10 and 11 · free', macSys: 'macOS 13+ · Apple Silicon and Intel · free', other: 'Other system:', winLink: 'Windows (Microsoft Store)', macLink: 'Mac (Mac App Store)' }
   };
   var ua = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '';
-  var os = /mac|iphone|ipad/i.test(ua) ? 'mac' : /win/i.test(ua) ? 'win' : 'win';
-  function url(key) { return RELEASES + FILES[key]; }
-  document.querySelectorAll('[data-file]').forEach(function (a) { a.href = url(a.dataset.file); });
-  var tagWin = document.querySelector('#plat-win .tag'), tagMac = document.querySelector('#plat-mac .tag');
-  (os === 'mac' ? tagMac : tagWin).hidden = false;
-  document.getElementById(os === 'mac' ? 'plat-mac' : 'plat-win').classList.add('recommended');
-  var ICON_WIN = document.querySelector('#plat-win .plat-head svg').outerHTML, ICON_MAC = document.querySelector('#plat-mac .plat-head svg').outerHTML;
+  var os = /mac|iphone|ipad/i.test(ua) ? 'mac' : 'win';
+  // V úvodu je první odznak pro systém návštěvníka
+  var hb = document.querySelector('.hero-badges');
+  if (hb && os === 'mac') hb.insertBefore(hb.querySelector('[data-store="mac"]'), hb.firstChild);
 
   var lang = 'cs';
   function render() {
@@ -428,19 +513,10 @@ footer a:hover { color: var(--ink); }
     document.querySelectorAll('[data-i18n-alt]').forEach(function (el) { if (d[el.dataset.i18nAlt] != null) el.alt = d[el.dataset.i18nAlt]; });
     document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { var v = d[el.dataset.i18nAria]; if (v != null) { el.setAttribute('aria-label', v); el.title = v; } });
     var u = UI[lang];
-    var main = document.getElementById('dl-main');
-    main.href = url(os === 'mac' ? 'mac-arm' : 'win');
-    document.getElementById('dl-main-icon').innerHTML = os === 'mac' ? ICON_MAC : ICON_WIN;
-    document.getElementById('dl-main-title').textContent = os === 'mac' ? u.mac : u.win;
-    document.getElementById('dl-main-meta').textContent = u.ver + VERSION + ' · ' + (os === 'mac' ? 'Apple Silicon · ' + SIZE['mac-arm'] : u.winSys + ' · ' + SIZE.win) + ' MB';
-    document.getElementById('meta-win').textContent = FILES.win + ' · ' + SIZE.win + ' MB · Windows 10 / 11 (64 bit)';
-    document.getElementById('meta-mac').textContent = 'pidgoo.dmg · ' + SIZE['mac-arm'] + ' MB · M1–M4 / Intel · macOS 13+';
-    var alt = document.getElementById('dl-alt');
-    alt.innerHTML = '';
-    var add = function (text, href) { var a = document.createElement('a'); a.href = href; a.textContent = text; alt.appendChild(a); };
-    var s = document.createElement('span'); s.textContent = u.other; alt.appendChild(s);
-    if (os === 'mac') { add(u.intel, url('mac-intel')); add(u.winLink, url('win')); }
-    else { add(u.macLink + ' (Apple Silicon)', url('mac-arm')); add(u.intel, url('mac-intel')); }
+    // Oficiální odznaky obchodů v jazyce stránky (Apple a Microsoft je poskytují k odkazu na aplikaci)
+    var loc = lang === 'en' ? 'en-us' : 'cs-cz';
+    document.querySelectorAll('img[data-badge="mac"]').forEach(function (i) { i.src = 'https://tools.applemarketingtools.com/api/badges/download-on-the-mac-app-store/black/' + loc; i.alt = u.mac; });
+    document.querySelectorAll('img[data-badge="win"]').forEach(function (i) { i.src = 'https://get.microsoft.com/images/' + loc + '%20dark.svg'; i.alt = u.win; });
     document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     var pl = document.getElementById('privacy-link'); if (pl) pl.href = lang === 'en' ? 'privacy.html' : 'soukromi.html';
     var tl = document.getElementById('terms-link'); if (tl) tl.href = lang === 'en' ? 'terms.html' : 'podminky.html';
@@ -482,17 +558,6 @@ footer a:hover { color: var(--ink); }
   });
   render();
 
-  // Číslo verze a velikosti souborů podle posledního vydání na GitHubu – po vydání nové verze se web aktualizuje sám.
-  if (REPO_API && window.fetch) {
-    fetch(REPO_API, { headers: { Accept: 'application/vnd.github+json' } }).then(function (r) { return r.ok ? r.json() : null; }).then(function (rel) {
-      if (!rel || !rel.tag_name) return;
-      VERSION = String(rel.tag_name).replace(/^v/i, '');
-      (rel.assets || []).forEach(function (a) {
-        Object.keys(FILES).forEach(function (k) { if (a.name === FILES[k] && a.size) SIZE[k] = Math.round(a.size / 1048576); });
-      });
-      render();
-    }).catch(function () { /* bez připojení k GitHubu zůstanou výchozí údaje */ });
-  }
 })();
 </script>
 
