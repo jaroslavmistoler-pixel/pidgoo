@@ -268,7 +268,7 @@ footer a:hover { color: var(--ink); }
       <p class="lead" data-i18n="hero.lead">Rychlá, přehledná a moderní e-mailová aplikace pro Windows a Mac. Bezpečnost je u nás na prvním místě – všechna data zůstávají zašifrovaná jen ve vašem zařízení.</p>
     </div>
     <div class="cta">
-      <div class="badges hero-badges"><a class="badge" data-store="win" href="https://apps.microsoft.com/detail/9MV1XQV4WPC2" target="_blank" rel="noopener"><img data-badge="win" src="https://get.microsoft.com/images/cs-cz%20dark.svg" alt="Stáhnout z Microsoft Store" height="56"></a><a class="badge" data-store="mac" href="https://apps.apple.com/app/id6818761345" target="_blank" rel="noopener"><img data-badge="mac" src="https://tools.applemarketingtools.com/api/badges/download-on-the-mac-app-store/black/cs-cz" alt="Stáhnout v Mac App Store" height="56"></a></div>
+      <div class="badges hero-badges"><a class="badge" data-store="win" href="https://apps.microsoft.com/detail/9MV1XQV4WPC2" target="_blank" rel="noopener"><img data-badge="win" src="https://get.microsoft.com/images/cs%20dark.svg" alt="Stáhnout z Microsoft Store" height="56"></a><a class="badge" data-store="mac" href="https://apps.apple.com/app/id6818761345" target="_blank" rel="noopener"><img data-badge="mac" src="badges/mac-app-store.svg" alt="Stáhnout v Mac App Store" height="56"></a></div>
       <div class="dl-meta" data-i18n="hero.req">Zdarma · Windows 10 a 11 · macOS 13 a novější (Apple Silicon i Intel)</div>
       <div class="soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span data-i18n="hero.soon">iPhone a Android – již brzy</span></div>
       <div class="trust">
@@ -515,8 +515,8 @@ wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
     var u = UI[lang];
     // Oficiální odznaky obchodů v jazyce stránky (Apple a Microsoft je poskytují k odkazu na aplikaci)
     var loc = lang === 'en' ? 'en-us' : 'cs-cz';
-    document.querySelectorAll('img[data-badge="mac"]').forEach(function (i) { i.src = 'https://tools.applemarketingtools.com/api/badges/download-on-the-mac-app-store/black/' + loc; i.alt = u.mac; });
-    document.querySelectorAll('img[data-badge="win"]').forEach(function (i) { i.src = 'https://get.microsoft.com/images/' + loc + '%20dark.svg'; i.alt = u.win; });
+    document.querySelectorAll('img[data-badge="mac"]').forEach(function (i) { i.alt = u.mac; });
+    document.querySelectorAll('img[data-badge="win"]').forEach(function (i) { i.src = 'https://get.microsoft.com/images/' + (lang === 'en' ? 'en-us' : 'cs') + '%20dark.svg'; i.alt = u.win; });
     document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     var pl = document.getElementById('privacy-link'); if (pl) pl.href = lang === 'en' ? 'privacy.html' : 'soukromi.html';
     var tl = document.getElementById('terms-link'); if (tl) tl.href = lang === 'en' ? 'terms.html' : 'podminky.html';
