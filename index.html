@@ -8,7 +8,7 @@
 <meta property="og:description" content="Rychlý a přehledný e-mailový klient pro Windows a Mac. Bez serveru, bez AI, bez reklam, bez registrace, zdarma.">
 <meta property="og:image" content="https://pidgoo.com/app-light.webp">
 <title>pidgoo</title>
-<!-- pidgoo.com · web 2.2 · 2026-10-02 -->
+<!-- pidgoo.com · web 2.4.2 · 2026-10-17 -->
 <meta name="description" content="pidgoo – rychlý a přehledný e-mailový klient pro Windows a Mac. Data šifrovaná AES-256 jen ve vašem zařízení. Bez vlastního serveru, bez AI, bez reklam, bez registrace a zcela zdarma.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -237,6 +237,38 @@ footer a:hover { color: var(--ink); }
   .shot { animation: rise .9s .12s cubic-bezier(.2, .7, .2, 1) both; }
   @keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
 }
+
+/* zdarma – zvýraznění v úvodu */
+.free { margin: 22px 0 0; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; max-width: 36em; }
+.free b { font: 650 clamp(22px, 2.4vw, 28px)/1 var(--display); letter-spacing: -.01em; color: var(--accent-ink); background: var(--accent); padding: 9px 16px 10px; border-radius: 14px; }
+.free span { color: var(--ink); font-weight: 500; font-size: clamp(15.5px, 1.4vw, 17px); min-width: 0; flex: 1 1 16em; }
+/* novinky 2.4.2 */
+.news { padding-block: 72px 24px; }
+.news-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 1060px) { .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .news-grid { grid-template-columns: minmax(0, 1fr); } }
+.nw-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 18px 22px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.nw-card h3 { font: 600 19px/1.25 var(--display); letter-spacing: -.01em; margin: 6px 0 0; }
+.nw-card p { margin: 0; color: var(--ink2); font-size: 15px; }
+.nw-art { height: 150px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); padding: 12px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; font-size: 12.5px; }
+.nw-art.chat .b { max-width: 82%; padding: 6px 10px; border-radius: 13px 13px 13px 4px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); line-height: 1.3; }
+.nw-art.chat .b.r { align-self: flex-end; background: var(--accent); border-color: var(--accent); color: var(--accent-ink); border-radius: 13px 13px 4px 13px; }
+.nw-art.chat .sys { align-self: center; font-size: 11px; color: var(--ink2); background: var(--accent-soft); border-radius: 999px; padding: 2px 9px; }
+.nw-art.today .tb { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; background: var(--coral-soft); color: #B9482A; font-weight: 600; border-radius: 999px; padding: 4px 10px 4px 8px; }
+.nw-art.today .tb svg { width: 14px; height: 14px; }
+.nw-art.today .tb em { font-style: normal; background: var(--surface); border-radius: 9px; min-width: 18px; text-align: center; font-size: 11px; padding: 1px 4px; }
+.nw-art.today .row { display: flex; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 5px 8px; color: var(--ink); }
+.nw-art.today .row .t { font: 500 11px var(--mono); color: var(--muted); width: 34px; font-style: normal; }
+.nw-art.files { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr auto; gap: 6px; }
+.nw-art.files .ph { border-radius: 9px; min-height: 0; }
+.nw-art.files .p1 { background: linear-gradient(160deg, #9CC9B2, #2C7A5C); } .nw-art.files .p2 { background: linear-gradient(160deg, #F6C7B7, #FF7A59); } .nw-art.files .p3 { background: linear-gradient(160deg, #B9CDE8, #3D6FA8); }
+.nw-art.files .doc { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 6px 8px; color: var(--ink); }
+.nw-art.files .doc i { font: 700 9px var(--body); font-style: normal; color: #fff; background: #D9534A; border-radius: 4px; padding: 3px 4px; }
+.nw-art.speed { justify-content: center; align-items: center; flex-direction: row; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); }
+.nw-art.speed .old { font-size: 20px; color: var(--muted); text-decoration: line-through; }
+.nw-art.speed .arrow { font-size: 20px; color: var(--coral); }
+.nw-art.speed .new { font: 600 34px var(--display); color: var(--accent); }
+.nw-art.speed small { flex-basis: 100%; text-align: center; font-family: var(--body); color: var(--muted); font-size: 12px; }
 </style>
 </head>
 <body>
@@ -246,6 +278,7 @@ footer a:hover { color: var(--ink); }
     <a class="logo" href="#top" aria-label="pidgoo"><img src="icon.svg" alt="" width="32" height="32"><svg aria-hidden="true" style="color:var(--ink)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 104"><g transform="translate(2,78)"><g fill="currentColor"><path transform="translate(0.00,0) scale(0.09600,-0.09600)" d="M326 -10Q273.75 -10 231.75 11.25Q189.75 32.5 164.625 69.75Q139.5 107 137.5 154.5V326Q139.5 373.5 165.0 411.375Q190.5 449.25 232.4746376811594 471.125Q274.4492753623188 493 326 493Q393 493 446.0 459.75Q499 426.5 529.5 369.625Q560 312.75 560 240.75Q560 169.5 529.5 112.75Q499 56 446.0 23.0Q393 -10 326 -10ZM57.5 -202.5V483H189V356.11547085201795L166.75 238.5L187.75 121.5V-202.5ZM303.1418269230769 111Q339.34375 111 366.921875 127.625Q394.5 144.25 410.25 173.76712328767124Q426 203.28424657534248 426 241.59246575342465Q426 280 410.25 309.375Q394.5 338.75 366.9830097087379 355.375Q339.4660194174757 372 303.4830097087379 372Q267.5 372 239.6268115942029 355.4546703296703Q211.7536231884058 338.90934065934067 196.3768115942029 309.46153846153845Q181 280.0137362637363 181 241.53296703296704Q181 203.25 196.25 173.75Q211.5 144.25 239.375 127.625Q267.25 111 303.1418269230769 111Z"/><path transform="translate(54.95,0) scale(0.09600,-0.09600)" d="M57.5 0V483H189V0Z"/><path transform="translate(77.16,0) scale(0.09600,-0.09600)" d="M261.5 -10Q194.5 -10 141.53911042944785 22.980263157894736Q88.5782208588957 55.96052631578947 58.03911042944785 112.73026315789474Q27.5 169.5 27.5 240.90853658536585Q27.5 313.0914634146341 58.0 369.79573170731703Q88.5 426.5 141.35576923076923 459.75Q194.21153846153845 493 261.5 493Q313.75 493 355.375 471.75Q397 450.5 422.625 413.25Q448.25 376 450 328.5V157Q448.25 109.5 423.0 71.625Q397.75 33.75 355.75 11.875Q313.75 -10 261.5 -10ZM284 111Q321 111 348.28952205882354 127.62332214765101Q375.5790441176471 144.24664429530202 391.03952205882354 173.623322147651Q406.5 203 406.5 241.5Q406.5 280.29009433962267 391.0923913043478 309.4492924528302Q375.6847826086956 338.60849056603774 348.3423913043478 355.3042452830189Q321 372 284.625 372Q248.25 372 220.8080985915493 355.2381516587678Q193.3661971830986 338.47630331753555 177.4330985915493 309.07582938388623Q161.5 279.67535545023696 161.5 241.5Q161.5 203.25 177.189039408867 173.78Q192.87807881773398 144.31 220.74137931034483 127.655Q248.60467980295567 111 284 111ZM530 0H399.75V129.75L420.75 247.5L398.5 364.25V723H530Z"/><path transform="translate(132.11,0) scale(0.09600,-0.09600)" d="M260.25 -214Q182.5 -214 123.75 -186.5Q65 -159 30 -109L113 -26.25Q140.5 -59.5 175.25 -76.625Q210 -93.75 259 -93.75Q319.75 -93.75 355.125 -62.875Q390.5 -32 390.5 22.5V143.5L412.75 249.5L391.75 356V483H522V24.5Q522 -47.5 488.5 -100.875Q455 -154.25 396.0 -184.125Q337 -214 260.25 -214ZM254.25 12.5Q189 12.5 137.125 44.125Q85.25 75.75 55.625 130.75Q26 185.75 26 253.5Q26 321.5 55.625 375.625Q85.25 429.75 137.125 461.375Q189 493 254.25 493Q307.75 493 349.125 472.125Q390.5 451.25 414.625 414.375Q438.75 377.5 440.5 328.5V177Q438.75 128.75 414.25 91.5Q389.75 54.25 348.375 33.375Q307 12.5 254.25 12.5ZM279.75 132.25Q315.75 132.25 342.5 147.75Q369.25 163.25 383.875 190.375Q398.5 217.5 398.5 253Q398.5 288.5 383.875 315.625Q369.25 342.75 342.625 358.25Q316 373.75 280 373.75Q244.25 373.75 217.125 358.25Q190 342.75 175.0 315.5Q160 288.25 160 253Q160 218.75 175.0 191.125Q190 163.5 217.0 147.875Q244 132.25 279.75 132.25Z"/><path transform="translate(186.19,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/><path transform="translate(239.32,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/></g><circle cx="66.78" cy="-59.50" r="7.83" fill="#FF7A59"/></g></svg></a>
     <nav class="nav-links" aria-label="Sekce">
       <a class="nav-support" href="https://ko-fi.com/pidgoo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1.5a3.5 3.5 0 0 1 0 7H17"/><path d="M3 8h14v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V8Z"/><path d="M7 2.5c-.6.8-.6 1.7 0 2.5M11 2.5c-.6.8-.6 1.7 0 2.5M15 2.5c-.6.8-.6 1.7 0 2.5"/></svg><span data-i18n="nav.support">Podpořit</span></a>
+      <a href="#novinky" data-i18n="nav.news">Novinky</a>
       <a href="#proc" data-i18n="nav.why">Proč pidgoo</a>
       <a href="#funkce" data-i18n="nav.features">Funkce</a>
       <a href="#bezpecnost" data-i18n="nav.security">Bezpečnost</a>
@@ -263,9 +296,10 @@ footer a:hover { color: var(--ink); }
 <main id="top">
   <div class="wrap hero">
     <div>
-      <span class="eyebrow"><span data-i18n="hero.eyebrow">Bezpečný e-mail</span> · Windows · Mac <span class="pill pill-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-i18n="hero.sec">Šifrované, jen u vás</span></span><span class="pill" data-i18n="hero.pill">Zdarma, bez reklam a registrace</span></span>
+      <span class="eyebrow"><span data-i18n="hero.eyebrow">Bezpečný e-mail</span> · Windows · Mac <span class="pill pill-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-i18n="hero.sec">Šifrované, jen u vás</span></span></span>
       <h1 data-i18n-html="hero.title">Vaše pošta.<br><span class="nw">Pod kontrolou<span class="cdot">.</span></span></h1>
       <p class="lead" data-i18n="hero.lead">Rychlá, přehledná a moderní e-mailová aplikace pro Windows a Mac. Bezpečnost je u nás na prvním místě – všechna data zůstávají zašifrovaná jen ve vašem zařízení.</p>
+      <p class="free"><b data-i18n="free.big">Zdarma</b><span data-i18n="free.rest">Bez reklam, bez registrace, bez předplatného. Všechny funkce, na všech zařízeních.</span></p>
     </div>
     <div class="cta">
       <div class="badges hero-badges"><a class="badge" data-store="win" href="https://apps.microsoft.com/detail/9MV1XQV4WPC2" target="_blank" rel="noopener"><img data-badge="win" src="https://get.microsoft.com/images/cs%20dark.svg" alt="Stáhnout z Microsoft Store" height="56"></a><a class="badge" data-store="mac" href="https://apps.apple.com/app/id6818761345" target="_blank" rel="noopener"><img data-badge="mac" src="badges/mac-app-store.svg" alt="Stáhnout v Mac App Store" height="56"></a></div>
@@ -274,7 +308,8 @@ footer a:hover { color: var(--ink); }
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3M19 4l2 2"/></svg><span data-i18n="trust.aes">Šifrování AES-256</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-i18n="trust.noai">Žádná AI, žádné sledování</span></span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span>IMAP · JMAP · Gmail · Microsoft 365</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span data-i18n="trust.acc">Gmail · Outlook · Microsoft 365 · iCloud · Seznam · Centrum · Yahoo · Fastmail · každý IMAP a JMAP</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span data-i18n="trust.cal">Kalendáře Google, Microsoft, iCloud, Seznam, Fastmail, Nextcloud a CalDAV · kontakty přes CardDAV</span></span>
       </div>
     </div>
   </div>
@@ -288,6 +323,37 @@ footer a:hover { color: var(--ink); }
       <p class="caption" data-i18n="shot.caption">Skutečný snímek pidgoo · světlý i tmavý režim podle systému</p>
     </div>
   </div>
+
+  <section class="news" id="novinky">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow" data-i18n="news.eyebrow">Novinky ve verzi 2.4.2</span><h2 data-i18n-html="news.title">Konverzace jako chat<span class="cdot">.</span></h2></div>
+        <p data-i18n="news.lead">Celou konverzaci vidíte na jedné obrazovce, přílohy pohromadě a celý den na jednom místě. Bez AI – jen jednoduchá pravidla.</p>
+      </div>
+      <div class="news-grid">
+        <article class="nw-card">
+          <div class="nw-art chat" aria-hidden="true"><span class="b l" data-i18n="news.c.b1">Jedeme o víkendu na chatu?</span><span class="b r" data-i18n="news.c.b2">Jasně! Sraz v pátek v pět.</span><span class="sys" data-i18n="news.c.sys">Tomáš je nově v kopii</span></div>
+          <h3 data-i18n="news.c.t">Konverzace jako chat</h3>
+          <p data-i18n="news.c.d">Přepnete jedním klepnutím. Každá zpráva celá i s podpisem, bez opakovaných citací, nejnovější dole a odpověď píšete rovnou pod ní.</p>
+        </article>
+        <article class="nw-card">
+          <div class="nw-art today" aria-hidden="true"><span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><span data-i18n="news.t.btn">Dnes</span><em>4</em></span><span class="row"><i class="t">10:00</i><span data-i18n="news.t.r1">Porada týmu</span></span><span class="row"><i class="t">✉</i><span data-i18n="news.t.r2">Čeká na vaši odpověď</span></span><span class="row"><i class="t">☐</i><span data-i18n="news.t.r3">Zaplatit kauci</span></span></div>
+          <h3 data-i18n="news.t.t">Dnes</h3>
+          <p data-i18n="news.t.d">Schůzky z kalendáře, e-maily, na které máte odpovědět, úkoly a odpovědi, na které čekáte – celý den na jednom místě.</p>
+        </article>
+        <article class="nw-card">
+          <div class="nw-art files" aria-hidden="true"><span class="ph p1"></span><span class="ph p2"></span><span class="ph p3"></span><span class="doc"><i>PDF</i>smlouva.pdf</span></div>
+          <h3 data-i18n="news.f.t">Přílohy celé konverzace</h3>
+          <p data-i18n="news.f.d">Všechny fotky a dokumenty z vlákna pohromadě – s náhledy, kdo je poslal a kdy. Otevřít, uložit nebo přeposlat jedním klepnutím.</p>
+        </article>
+        <article class="nw-card">
+          <div class="nw-art speed" aria-hidden="true"><span class="old">180 ms</span><span class="arrow">→</span><span class="new">51 ms</span><small data-i18n="news.s.small">hledání ve 100 000 zprávách</small></div>
+          <h3 data-i18n="news.s.t">Rychlejší hledání</h3>
+          <p data-i18n="news.s.d">Výsledky se ukážou hned, i bez připojení, a nevadí ani chybějící diakritika – „tomas kral“ najde Tomáše Krále.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <section class="band why" id="proc">
     <div class="wrap">
@@ -432,7 +498,15 @@ wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
     'nav.features': 'Features', 'nav.security': 'Security', 'nav.e2e': 'Encryption', 'nav.download': 'Download', 'nav.support': 'Support', 'theme.toggle': 'Light / dark theme', 'foot.support': 'Support pidgoo', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
     'hero.eyebrow': 'Secure email',
     'hero.sec': 'Encrypted, only on your device',
-    'hero.pill': 'Free, no ads, no sign-up',
+    'trust.acc': 'Gmail · Outlook · Microsoft 365 · iCloud · Seznam · Centrum · Yahoo · Fastmail · any IMAP and JMAP', 'trust.cal': 'Google, Microsoft, iCloud, Seznam, Fastmail, Nextcloud and CalDAV calendars · contacts via CardDAV',
+    'free.big': 'Free', 'free.rest': 'No ads, no sign-up, no subscription. Every feature, on every device.',
+    'nav.news': 'What’s new', 'news.eyebrow': 'New in version 2.4.2', 'news.title': 'Conversations as chat<span class="cdot">.</span>',
+    'news.lead': 'See a whole conversation on one screen, all attachments together and your whole day in one place. No AI – just simple rules.',
+    'news.c.b1': 'Cabin this weekend?', 'news.c.b2': 'Sure! Friday at five.', 'news.c.sys': 'Tomáš is now in Cc', 'news.c.t': 'Conversation as chat', 'news.c.d': 'One tap to switch. Every message in full with its signature, no repeated quotes, newest at the bottom, and you reply right below it.',
+    'news.t.btn': 'Today', 'news.t.r1': 'Team meeting', 'news.t.r2': 'Waiting for your reply', 'news.t.r3': 'Pay the deposit', 'news.t.t': 'Today',
+    'news.t.d': 'Meetings from your calendar, emails waiting for your reply, tasks and replies you are waiting for – your whole day in one place.',
+    'news.f.t': 'All attachments of a conversation', 'news.f.d': 'Every photo and document from the thread together – with previews, who sent it and when. Open, save or forward with one tap.',
+    'news.s.small': 'search across 100,000 messages', 'news.s.t': 'Faster search', 'news.s.d': 'Results appear instantly, even offline, and missing accents don’t matter.',
     'how.title': 'How it works',
     'h1.t': 'Your key is made on your device', 'h1.d': 'When you turn it on, pidgoo creates a key pair on your device: a secret key that stays encrypted with you, and a public key that is not secret and anyone may have.',
     'h2.t': 'The public key travels with your email', 'h2.d': 'pidgoo adds an Autocrypt header with your public key to every message. The other side stores it automatically – no key server and nothing to arrange.',
