@@ -81,7 +81,7 @@ footer a { color: var(--muted); }
 
 <h2 id="protection">How we protect your data</h2>
 <ul>
-<li><b>Encryption on your device</b> – accounts, passwords, access tokens, calendars, contacts, tasks and stored messages are encrypted with AES-256-GCM. The key is protected by the operating system: the Secure Enclave and Keychain on iPhone and iPad, the Android Keystore on Android phones, and the system’s protected storage (Windows DPAPI, macOS Keychain) on computers. You can also lock pidgoo with your own password (the key is derived with scrypt), your fingerprint or Face ID.</li>
+<li><b>Encryption on your device</b> – accounts, passwords, access tokens, calendars, contacts, tasks and stored messages are encrypted with AES-256-GCM. The key is protected by the operating system: the Secure Enclave and Keychain on iPhone and iPad, the Android Keystore on Android phones, and the system’s protected storage (Windows DPAPI, macOS Keychain) on computers. You can also lock pidgoo with your own password (the key is derived from it with scrypt on computers and PBKDF2 on phones), your fingerprint or Face ID.</li>
 <li><b>Encryption in transit</b> – pidgoo connects to servers only over encrypted connections (TLS 1.2 or newer) with server certificate validation; unencrypted connections are refused.</li>
 <li><b>No server</b> – pidgoo has no server of its own. Your email and Google user data never pass through the author of pidgoo or anyone else.</li>
 <li><b>Least privilege</b> – from Google, pidgoo requests calendar access only; passwords and tokens never reach the app’s user-interface layer, and the Google Calendar token is only ever sent to Google (the Google Calendar API).</li>
