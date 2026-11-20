@@ -214,13 +214,18 @@ h2 { font: 600 clamp(32px, 4.2vw, 52px)/1.04 var(--display); letter-spacing: -.0
 
 /* ---------- odznaky obchodů ---------- */
 .badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.badge { display: inline-flex; border-radius: 10px; line-height: 0; }
-.badge img { height: 52px; width: auto; display: block; }
-.hero-badges { width: fit-content; max-width: 100%; background: #FF7A59; padding: 16px 18px; border-radius: 18px; box-shadow: 0 14px 32px -14px rgba(255, 122, 89, .65); }
-.hero-badges .badge img { height: 46px; }
-.badge.play img { height: 68px !important; margin: -11px -10px; }
-@media (max-width: 480px) { .hero-badges .badge.play img { height: 64px !important; margin: -10px -9px; } }
-@media (max-width: 480px) { .hero-badges { padding: 14px; flex-direction: column; align-items: stretch; } .hero-badges .badge img { height: 44px; } }
+/* Čtyři odznaky ve stejných dlaždicích: stejná šířka, výška, rámeček i zaoblení */
+.hero-badges { --bh: 52px; display: grid; grid-template-columns: repeat(2, calc(var(--bh) * 3.39)); gap: 12px; width: fit-content; max-width: 100%; background: #FF7A59; padding: 18px; border-radius: 18px; box-shadow: 0 14px 32px -14px rgba(255, 122, 89, .65); }
+.hero-badges .badge { box-sizing: border-box; width: calc(var(--bh) * 3.39); height: var(--bh); display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; border: 1px solid #A6A6A6; border-radius: calc(var(--bh) * .11); line-height: 0; transition: transform .15s ease; }
+.hero-badges .badge:hover { transform: translateY(-1px); }
+.hero-badges .badge img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hero-badges .badge[data-store="win"] { background: #202020; }
+.hero-badges .badge[data-store="win"] img { width: 104%; height: 104%; flex: none; }
+.hero-badges .badge.play { border: 0; background: transparent; }
+.hero-badges .badge.play img { width: auto; height: calc(var(--bh) * 1.311); max-width: none; flex: none; object-fit: fill; }
+@media (max-width: 480px) { .hero-badges { --bh: 46px; padding: 14px; gap: 10px; } }
+@media (max-width: 400px) { .hero-badges { --bh: 40px; } }
+@media (max-width: 340px) { .hero-badges { grid-template-columns: calc(var(--bh) * 3.39); } }
 .badge:focus-visible { outline: 3px solid #0F2A21; outline-offset: 3px; }
 .dl-meta { font-size: 14px; color: var(--muted); }
 .eyebrow .plats { white-space: nowrap; }
