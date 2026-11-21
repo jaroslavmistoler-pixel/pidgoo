@@ -179,6 +179,7 @@ h2 { font: 600 clamp(32px, 4.2vw, 52px)/1.04 var(--display); letter-spacing: -.0
 .spec .k { color: #7FD6AE; }
 .spec .d { color: #FF9B80; }
 .spec-note { font-size: 13.5px; color: var(--dark-muted); margin-top: 14px; }
+.spec-note a { color: var(--mint); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
 /* ---------- šifrovaná pošta ---------- */
 .e2e { padding-block: 96px 40px; }
@@ -462,7 +463,7 @@ footer a:hover { color: var(--ink); }
 <span class="c"># šifrované e-maily (volitelné)</span>
 <span class="k">e2e</span>         OpenPGP · Autocrypt · <span class="d">vypnuto</span> po instalaci
 <span class="k">keys</span>        Ed25519 · X25519 · AES-256</pre>
-          <p class="spec-note" data-i18n="sec.note">Každé vydání prochází důkladnou bezpečnostní revizí kódu a útočnými testy. Technický dokument pro odborníky je jeho součástí.</p>
+          <p class="spec-note" data-i18n-html="sec.note">Každé vydání prochází důkladnou bezpečnostní revizí kódu a útočnými testy. <a href="bezpecnost.html">Technický přehled pro odborníky a hlášení chyb</a>.</p>
         </div>
       </div>
     </div>
@@ -521,6 +522,7 @@ wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
       <a href="mailto:hello@pidgoo.com" class="nodot">hello@pidgoo.com</a>
       <a href="soukromi.html" id="privacy-link" data-i18n="foot.privacy">Soukromí</a>
       <a href="podminky.html" id="terms-link" data-i18n="foot.terms">Podmínky</a>
+      <a href="bezpecnost.html" id="security-link" data-i18n="foot.secdoc">Bezpečnost pro odborníky</a>
       <a href="#proc" data-i18n="nav.why">Proč pidgoo</a>
       <a href="#funkce" data-i18n="nav.features">Funkce</a>
       <a href="#bezpecnost" data-i18n="nav.security">Bezpečnost</a>
@@ -597,7 +599,7 @@ wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
     'e2.t': 'A lock only where it works', 'e2.d': 'The lock shows up on a message only when encryption is possible. Everyone else you write to as before. It also works with other apps that use the open OpenPGP standard.',
     'e3.t': 'Only you hold the key', 'e3.d': 'Your secret key stays encrypted on your device. Move it to another device with a backup file that only a 36-digit code on paper can unlock.',
     'e2e.std': 'Standards:', 'e2e.subj': 'hidden subject',
-    'sec.note': 'Every release goes through a thorough security code review and attack testing. A technical document for experts ships with it.',
+    'sec.note': 'Every release goes through a thorough security code review and attack testing. <a href="security.html">Technical overview for experts and bug reporting</a>.', 'foot.secdoc': 'Security for experts',
     'hero.req': 'Free · Windows 10 and 11 · Mac with Apple silicon (macOS 13+) · iPhone and iPad (iOS 17+) · Android 8+'
   };
   var CS = {};
@@ -635,6 +637,7 @@ wV4D3k8x0mQ1YtwSAQdA7Qm1yH2vKpLr9sZcX4…
     document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     var pl = document.getElementById('privacy-link'); if (pl) pl.href = lang === 'en' ? 'privacy.html' : 'soukromi.html';
     var tl = document.getElementById('terms-link'); if (tl) tl.href = lang === 'en' ? 'terms.html' : 'podminky.html';
+    var sl = document.getElementById('security-link'); if (sl) sl.href = lang === 'en' ? 'security.html' : 'bezpecnost.html';
     brandDots(document.body);
   }
   // Všude, kde je v textu „pidgoo“, dostane „i“ oranžovou tečku z loga (názvy souborů a adresy se nemění).

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Security – pidgoo</title>
+<meta name="description" content="How pidgoo protects your data: AES-256-GCM encryption on the device, no server, TLS, OpenPGP. Technical overview and how to report a vulnerability.">
+<link rel="canonical" href="https://pidgoo.com/security.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: 'Geist Mono'; src: url('GeistMono-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+@font-face { font-family: 'Outfit'; src: url('Outfit-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('Geist-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+:root { --bg: #F4F8F5; --surface: #FFFFFF; --ink: #0F2A21; --ink2: #34504A; --muted: #5A7268; --line: #DCE7E1; --accent: #2C7A5C; --accent-soft: #D9F0E3; --coral: #FF7A59; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0B1310; --surface: #111C17; --ink: #E5F3EB; --ink2: #BFD6CA; --muted: #93AE9F; --line: #1F302A; --accent: #7FD6AE; --accent-soft: #143328; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.65 'Geist', 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+header { border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo img { width: 30px; height: 30px; }
+.logo svg { height: 22px; width: auto; }
+.lang { font-size: 14px; color: var(--muted); text-decoration: none; }
+main { padding: 48px 0 64px; }
+h1 { font: 600 clamp(30px, 5vw, 42px)/1.15 'Outfit', 'Segoe UI', sans-serif; letter-spacing: -.02em; margin: 0 0 8px; }
+.updated { color: var(--muted); font-size: 14px; margin: 0 0 32px; }
+.summary { background: var(--accent-soft); border-radius: 16px; padding: 18px 22px; margin: 0 0 36px; }
+.summary p { margin: 0; }
+h2 { font: 600 21px/1.3 'Outfit', 'Segoe UI', sans-serif; margin: 36px 0 10px; }
+p, li { color: var(--ink2); }
+ul { padding-left: 22px; }
+li { margin: 6px 0; }
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+footer a { color: var(--muted); }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 8px; }
+@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; }
+.card h3 { font: 600 16px/1.3 'Outfit', 'Segoe UI', sans-serif; margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
+.card ul { margin: 0; padding-left: 20px; }
+.card li { font-size: 15px; }
+.ok { color: var(--accent); } .no { color: var(--coral); }
+.tbl { overflow-x: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 520px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink2); }
+th { font-weight: 600; color: var(--ink); background: var(--accent-soft); }
+tr:last-child td { border-bottom: 0; }
+code { font-family: 'Geist Mono', ui-monospace, Consolas, monospace; font-size: .9em; background: var(--accent-soft); padding: 1px 6px; border-radius: 5px; color: var(--ink); }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; padding: 0; list-style: none; }
+.toc a { display: inline-block; font-size: 14px; text-decoration: none; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink2); background: var(--surface); }
+.report { border: 2px solid var(--coral); border-radius: 16px; padding: 18px 22px; margin-top: 14px; }
+.report p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./" aria-label="pidgoo"><img src="icon.svg" alt="" width="30" height="30"><svg role="img" aria-hidden="true" style="color:var(--ink)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 104"><g transform="translate(2,78)"><g fill="currentColor"><path transform="translate(0.00,0) scale(0.09600,-0.09600)" d="M326 -10Q273.75 -10 231.75 11.25Q189.75 32.5 164.625 69.75Q139.5 107 137.5 154.5V326Q139.5 373.5 165.0 411.375Q190.5 449.25 232.4746376811594 471.125Q274.4492753623188 493 326 493Q393 493 446.0 459.75Q499 426.5 529.5 369.625Q560 312.75 560 240.75Q560 169.5 529.5 112.75Q499 56 446.0 23.0Q393 -10 326 -10ZM57.5 -202.5V483H189V356.11547085201795L166.75 238.5L187.75 121.5V-202.5ZM303.1418269230769 111Q339.34375 111 366.921875 127.625Q394.5 144.25 410.25 173.76712328767124Q426 203.28424657534248 426 241.59246575342465Q426 280 410.25 309.375Q394.5 338.75 366.9830097087379 355.375Q339.4660194174757 372 303.4830097087379 372Q267.5 372 239.6268115942029 355.4546703296703Q211.7536231884058 338.90934065934067 196.3768115942029 309.46153846153845Q181 280.0137362637363 181 241.53296703296704Q181 203.25 196.25 173.75Q211.5 144.25 239.375 127.625Q267.25 111 303.1418269230769 111Z"/><path transform="translate(54.95,0) scale(0.09600,-0.09600)" d="M57.5 0V483H189V0Z"/><path transform="translate(77.16,0) scale(0.09600,-0.09600)" d="M261.5 -10Q194.5 -10 141.53911042944785 22.980263157894736Q88.5782208588957 55.96052631578947 58.03911042944785 112.73026315789474Q27.5 169.5 27.5 240.90853658536585Q27.5 313.0914634146341 58.0 369.79573170731703Q88.5 426.5 141.35576923076923 459.75Q194.21153846153845 493 261.5 493Q313.75 493 355.375 471.75Q397 450.5 422.625 413.25Q448.25 376 450 328.5V157Q448.25 109.5 423.0 71.625Q397.75 33.75 355.75 11.875Q313.75 -10 261.5 -10ZM284 111Q321 111 348.28952205882354 127.62332214765101Q375.5790441176471 144.24664429530202 391.03952205882354 173.623322147651Q406.5 203 406.5 241.5Q406.5 280.29009433962267 391.0923913043478 309.4492924528302Q375.6847826086956 338.60849056603774 348.3423913043478 355.3042452830189Q321 372 284.625 372Q248.25 372 220.8080985915493 355.2381516587678Q193.3661971830986 338.47630331753555 177.4330985915493 309.07582938388623Q161.5 279.67535545023696 161.5 241.5Q161.5 203.25 177.189039408867 173.78Q192.87807881773398 144.31 220.74137931034483 127.655Q248.60467980295567 111 284 111ZM530 0H399.75V129.75L420.75 247.5L398.5 364.25V723H530Z"/><path transform="translate(132.11,0) scale(0.09600,-0.09600)" d="M260.25 -214Q182.5 -214 123.75 -186.5Q65 -159 30 -109L113 -26.25Q140.5 -59.5 175.25 -76.625Q210 -93.75 259 -93.75Q319.75 -93.75 355.125 -62.875Q390.5 -32 390.5 22.5V143.5L412.75 249.5L391.75 356V483H522V24.5Q522 -47.5 488.5 -100.875Q455 -154.25 396.0 -184.125Q337 -214 260.25 -214ZM254.25 12.5Q189 12.5 137.125 44.125Q85.25 75.75 55.625 130.75Q26 185.75 26 253.5Q26 321.5 55.625 375.625Q85.25 429.75 137.125 461.375Q189 493 254.25 493Q307.75 493 349.125 472.125Q390.5 451.25 414.625 414.375Q438.75 377.5 440.5 328.5V177Q438.75 128.75 414.25 91.5Q389.75 54.25 348.375 33.375Q307 12.5 254.25 12.5ZM279.75 132.25Q315.75 132.25 342.5 147.75Q369.25 163.25 383.875 190.375Q398.5 217.5 398.5 253Q398.5 288.5 383.875 315.625Q369.25 342.75 342.625 358.25Q316 373.75 280 373.75Q244.25 373.75 217.125 358.25Q190 342.75 175.0 315.5Q160 288.25 160 253Q160 218.75 175.0 191.125Q190 163.5 217.0 147.875Q244 132.25 279.75 132.25Z"/><path transform="translate(186.19,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/><path transform="translate(239.32,0) scale(0.09600,-0.09600)" d="M284.5 -10.5Q211.75 -10.5 153.125 23.0Q94.5 56.5 60.25 114.0Q26 171.5 26 242.5Q26 313.5 60.125 370.0Q94.25 426.5 152.875 460.0Q211.5 493.5 284.25 493.5Q357.75 493.5 416.25 460.375Q474.75 427.25 509.0 370.375Q543.25 313.5 543.25 242.5Q543.25 171.5 509.125 114.0Q475 56.5 416.5 23.0Q358 -10.5 284.5 -10.5ZM284.25 112Q321.25 112 349.5 128.5Q377.75 145 393.375 174.625Q409 204.25 409 242.25Q409 280.25 392.875 309.125Q376.75 338 349.0 354.5Q321.25 371 284.25 371Q248.25 371 220.0 354.375Q191.75 337.75 176.0 308.875Q160.25 280 160.25 242Q160.25 204.25 176.0 174.625Q191.75 145 220.0 128.5Q248.25 112 284.25 112Z"/></g><circle cx="66.78" cy="-59.50" r="7.83" fill="#FF7A59"/></g></svg></a><a class="lang" href="bezpecnost.html" hreflang="cs">Česky</a></div></header>
+
+<main><div class="wrap">
+<h1>pidgoo security</h1>
+<p class="updated">Technical overview for experts · updated 21 November 2026</p>
+<div class="summary"><p><b>In short:</b> pidgoo has no server. It connects directly to your mail and calendar servers, keeps data on the device encrypted with AES-256-GCM and sends no analytics or statistics anywhere. This page describes how the protection works – pidgoo's security does not rely on keeping the design secret, but on your password and the keys on your device.</p></div>
+<ul class="toc">
+<li><a href="#threats">What it protects against</a></li><li><a href="#device">Data on the device</a></li><li><a href="#connections">Connections</a></li><li><a href="#network">Who it talks to</a></li><li><a href="#reading">Reading mail</a></li><li><a href="#e2e">Encrypted email</a></li><li><a href="#releases">Releases</a></li><li><a href="#report">Report a bug</a></li>
+</ul>
+
+<h2 id="threats">What pidgoo protects against – and what it doesn't</h2>
+<div class="grid2">
+<div class="card"><h3><span class="ok" aria-hidden="true">✓</span> Protects against</h3><ul>
+<li>A stolen or lost disk, computer or phone – the data is encrypted.</li>
+<li>Network eavesdropping (public Wi-Fi) – TLS with a verified certificate only.</li>
+<li>Leaks through cloud backups – the data is excluded from backups.</li>
+<li>Read tracking – remote images load only with your permission.</li>
+<li>Malicious attachments disguised as documents.</li>
+<li>A middleman – there is no pidgoo server.</li>
+</ul></div>
+<div class="card"><h3><span class="no" aria-hidden="true">!</span> Does not protect against</h3><ul>
+<li>Malware already running on your unlocked device under your account.</li>
+<li>A compromised or untrusted mail server – it always sees your mail (except encrypted email).</li>
+<li>A weak or leaked password to your mailbox.</li>
+<li>Phishing – pidgoo cannot reliably recognise it for you.</li>
+</ul></div>
+</div>
+
+<h2 id="device">Data on the device</h2>
+<p>Accounts, passwords, access tokens, contacts, calendars, tasks and settings are kept in a vault encrypted with <b>AES-256-GCM</b>. The vault key is protected by the operating system; on computers also by your pidgoo password.</p>
+<div class="tbl"><table>
+<thead><tr><th>System</th><th>Key protection</th><th>Backups</th></tr></thead>
+<tbody>
+<tr><td>Windows</td><td>pidgoo password → <b>scrypt</b> (N=2<sup>17</sup>, 128 MB per attempt) + DPAPI</td><td>excluded from backups</td></tr>
+<tr><td>Mac</td><td>pidgoo password → <b>scrypt</b> (N=2<sup>17</sup>) + macOS Keychain</td><td>excluded from Time Machine</td></tr>
+<tr><td>iPhone and iPad</td><td>Secure Enclave and Keychain</td><td>not in iCloud or device backups</td></tr>
+<tr><td>Android</td><td>Android Keystore (hardware-backed)</td><td>excluded from Google backups and device-to-device transfer</td></tr>
+</tbody></table></div>
+<ul>
+<li>The <b>recovery code</b> for a forgotten password has 80 bits of randomness and is created only on your device.</li>
+<li><b>Passwords and tokens</b> never reach the display layer of the app (WebView) – only a separate internal part handles them.</li>
+<li><b>Email stays on the server</b>; only what is needed for fast display is kept on the device, also encrypted.</li>
+</ul>
+
+<h2 id="connections">Server connections</h2>
+<ul>
+<li>Encrypted only: <b>TLS 1.2 or newer</b> with server certificate verification. Unencrypted connections are refused.</li>
+<li>Sign-in with Google and Microsoft: <b>OAuth 2.0 with PKCE (S256)</b> – pidgoo never sees your account password and requests only the minimum permissions.</li>
+</ul>
+
+<h2 id="network">Who the app talks to</h2>
+<p>Always directly from your device, never through a pidgoo server:</p>
+<ul>
+<li>your mail, calendar and contacts servers (IMAP, SMTP, JMAP, CalDAV, CardDAV),</li>
+<li>Google and Microsoft when you choose to sign in with them,</li>
+<li>DNS and a public server-settings database – only the domain after @, when adding an account,</li>
+<li>Google Cloud Translation – only when you click Translate,</li>
+<li>the sender's servers – only when you allow images in a message or click Unsubscribe.</li>
+</ul>
+<p><b>Never:</b> analytics, telemetry, crash reporting, advertising or tracking services, AI. The full list is in the <a href="privacy.html">privacy policy</a>.</p>
+
+<h2 id="reading">Reading mail</h2>
+<ul>
+<li>Remote images are blocked by default, so the sender cannot tell you opened the message.</li>
+<li>pidgoo won't open programs and scripts disguised as documents; every saved attachment gets the system's "downloaded from the internet" mark.</li>
+</ul>
+
+<h2 id="e2e">Encrypted email (optional)</h2>
+<ul>
+<li>Open standards <b>OpenPGP</b> and <b>Autocrypt</b>; <b>Ed25519 / X25519</b> keys, <b>AES-256</b> content. The subject and attachments are encrypted too.</li>
+<li>Off after installation. The secret key is created and stays encrypted on the device; it moves to another device in a backup file that only a 36-character code unlocks.</li>
+<li>Encryption is done by a single core written in <b>Rust</b> – the same on Windows, Mac, iPhone and Android.</li>
+</ul>
+
+<h2 id="releases">Development and releases</h2>
+<ul>
+<li>Every release goes through a security code review and attack testing.</li>
+<li>pidgoo installs only from the Microsoft Store, App Store and Google Play; packages are signed and the stores verify the signature. Updates are delivered by the store.</li>
+</ul>
+
+<h2 id="report">Report a security bug</h2>
+<div class="report">
+<p>Found a vulnerability? Please email <a href="mailto:hello@pidgoo.com?subject=Security">hello@pidgoo.com</a> with the subject <b>"Security"</b>.</p>
+<p>Describe what it affects, which version and system, and how to reproduce it. Please don't publish it until a fix is released – we'll get back to you as soon as possible and are happy to credit you by name after the fix (if you wish).</p>
+<p>Machine-readable contact: <a href="/.well-known/security.txt"><code>/.well-known/security.txt</code></a></p>
+</div>
+
+</div></main>
+<footer><div class="wrap"><a href="./">pidgoo.com</a> · <a href="mailto:hello@pidgoo.com">hello@pidgoo.com</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Security</a></div></footer>
+</body>
+</html>
